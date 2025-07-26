@@ -104,12 +104,7 @@ export default function Dashboard() {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <LinearGradient
-                    colors={["#2e78b7", "#1565C0", "#0D47A1"]}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 1 }}
-                    style={styles.headerGradient}
-                >
+                <View style={styles.header}>
                     <View style={styles.headerContent}>
                         <View style={styles.headerTop}>
                             <View style={styles.welcomeSection}>
@@ -124,7 +119,7 @@ export default function Dashboard() {
                                 <Ionicons
                                     name="notifications-outline"
                                     size={24}
-                                    color="white"
+                                    color="#2e78b7"
                                 />
                                 <View style={styles.notificationBadge} />
                             </TouchableOpacity>
@@ -135,7 +130,7 @@ export default function Dashboard() {
                                 <Ionicons
                                     name="today-outline"
                                     size={20}
-                                    color="rgba(255,255,255,0.8)"
+                                    color="#666"
                                 />
                                 <Text style={styles.quickStatText}>Hoy</Text>
                             </View>
@@ -143,7 +138,7 @@ export default function Dashboard() {
                                 <Ionicons
                                     name="location-outline"
                                     size={20}
-                                    color="rgba(255,255,255,0.8)"
+                                    color="#666"
                                 />
                                 <Text style={styles.quickStatText}>
                                     Sucursal Centro
@@ -151,7 +146,7 @@ export default function Dashboard() {
                             </View>
                         </View>
                     </View>
-                </LinearGradient>
+                </View>
 
                 {/* Carrusel de estadísticas */}
                 <View style={styles.carouselSection}>
@@ -174,10 +169,16 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#f5f5f5",
     },
-    headerGradient: {
+    header: {
+        backgroundColor: "white",
         paddingTop: 20,
         paddingBottom: 30,
         paddingHorizontal: 20,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 3,
     },
     headerContent: {
         flex: 1,
@@ -193,18 +194,18 @@ const styles = StyleSheet.create({
     },
     welcomeText: {
         fontSize: 16,
-        color: "rgba(255,255,255,0.8)",
+        color: "#666",
         marginBottom: 4,
     },
     headerTitle: {
         fontSize: 24,
         fontWeight: "bold",
-        color: "white",
+        color: "#333",
     },
     notificationButton: {
         position: "relative",
         padding: 8,
-        backgroundColor: "rgba(255,255,255,0.1)",
+        backgroundColor: "#f5f5f5",
         borderRadius: 12,
     },
     notificationBadge: {
@@ -226,12 +227,11 @@ const styles = StyleSheet.create({
         gap: 6,
     },
     quickStatText: {
-        color: "rgba(255,255,255,0.8)",
+        color: "#666",
         fontSize: 14,
         fontWeight: "500",
     },
     carouselSection: {
-        marginTop: -15,
         paddingBottom: 10,
     },
     sliderContainer: {
