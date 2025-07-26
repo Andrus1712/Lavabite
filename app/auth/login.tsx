@@ -28,7 +28,7 @@ export default function LoginScreen() {
     console.log('Login con:', { username, password, sucursal });
     
     // Redirigir al usuario al dashboard después del login exitoso
-    router.replace('/dashboard');
+    router.replace('/(tabs)');
   };
 
   return (
