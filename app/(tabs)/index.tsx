@@ -1,5 +1,6 @@
 import { StatsCarousel } from "@/components/StatsCarousel";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5, Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React from "react";
 import {
@@ -16,7 +17,7 @@ const MODULES = [
     {
         id: "1",
         title: "Cobro de servicio",
-        icon: "cash-register",
+        icon: "money-bill",
         color: "#4CAF50",
     },
     { id: "2", title: "Nuevo servicio", icon: "plus-circle", color: "#2196F3" },
@@ -28,7 +29,7 @@ const MODULES = [
     },
     { id: "4", title: "Ver vehículos", icon: "car", color: "#9C27B0" },
     { id: "5", title: "Histórico del día", icon: "history", color: "#F44336" },
-    { id: "6", title: "Cobro servicio", icon: "money-bill", color: "#009688" },
+    { id: "6", title: "Metricas", icon: "chart-pie", color: "#009688" },
 ];
 
 export default function Dashboard() {
@@ -63,13 +64,20 @@ export default function Dashboard() {
         const handleModulePress = () => {
             if (item.title === "Nuevo servicio") {
                 router.push("/nuevo-servicio");
-            } else if (item.title === "Cobro de servicio" || item.title === "Cobro servicio") {
+            } else if (
+                item.title === "Cobro de servicio" ||
+                item.title === "Cobro servicio"
+            ) {
                 router.push("/cobro-servicio");
+            } else if (item.title === "Ver vehículos") {
+                router.push("/vehiculos");
+            } else if (item.title === "Metricas") {
+                router.push("/metricas");
             } else {
                 console.log(`Módulo ${item.title} presionado`);
             }
         };
-        
+
         return (
             <TouchableOpacity
                 key={item.id}
@@ -96,11 +104,59 @@ export default function Dashboard() {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <View style={styles.header}>
-                    <Text style={styles.headerTitle}>Dashboard</Text>
-                </View>
+                <LinearGradient
+                    colors={["#2e78b7", "#1565C0", "#0D47A1"]}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={styles.headerGradient}
+                >
+                    <View style={styles.headerContent}>
+                        <View style={styles.headerTop}>
+                            <View style={styles.welcomeSection}>
+                                <Text style={styles.welcomeText}>
+                                    Bienvenido
+                                </Text>
+                                <Text style={styles.headerTitle}>
+                                    Dashboard Lavabite
+                                </Text>
+                            </View>
+                            <TouchableOpacity style={styles.notificationButton}>
+                                <Ionicons
+                                    name="notifications-outline"
+                                    size={24}
+                                    color="white"
+                                />
+                                <View style={styles.notificationBadge} />
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={styles.quickStats}>
+                            <View style={styles.quickStatItem}>
+                                <Ionicons
+                                    name="today-outline"
+                                    size={20}
+                                    color="rgba(255,255,255,0.8)"
+                                />
+                                <Text style={styles.quickStatText}>Hoy</Text>
+                            </View>
+                            <View style={styles.quickStatItem}>
+                                <Ionicons
+                                    name="location-outline"
+                                    size={20}
+                                    color="rgba(255,255,255,0.8)"
+                                />
+                                <Text style={styles.quickStatText}>
+                                    Sucursal Centro
+                                </Text>
+                            </View>
+                        </View>
+                    </View>
+                </LinearGradient>
+
                 {/* Carrusel de estadísticas */}
-                <StatsCarousel data={carouselData} />
+                <View style={styles.carouselSection}>
+                    <StatsCarousel data={carouselData} />
+                </View>
 
                 <View style={styles.modulesContainer}>
                     <Text style={styles.sectionTitle}>Módulos</Text>
@@ -118,20 +174,65 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#f5f5f5",
     },
-    header: {
-        padding: 15,
-        backgroundColor: "#2e78b7",
-        elevation: 4,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
+    headerGradient: {
+        paddingTop: 20,
+        paddingBottom: 30,
+        paddingHorizontal: 20,
+    },
+    headerContent: {
+        flex: 1,
+    },
+    headerTop: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "flex-start",
+        marginBottom: 20,
+    },
+    welcomeSection: {
+        flex: 1,
+    },
+    welcomeText: {
+        fontSize: 16,
+        color: "rgba(255,255,255,0.8)",
+        marginBottom: 4,
     },
     headerTitle: {
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: "bold",
         color: "white",
-        textAlign: "center",
+    },
+    notificationButton: {
+        position: "relative",
+        padding: 8,
+        backgroundColor: "rgba(255,255,255,0.1)",
+        borderRadius: 12,
+    },
+    notificationBadge: {
+        position: "absolute",
+        top: 6,
+        right: 6,
+        width: 8,
+        height: 8,
+        backgroundColor: "#FF4444",
+        borderRadius: 4,
+    },
+    quickStats: {
+        flexDirection: "row",
+        gap: 20,
+    },
+    quickStatItem: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 6,
+    },
+    quickStatText: {
+        color: "rgba(255,255,255,0.8)",
+        fontSize: 14,
+        fontWeight: "500",
+    },
+    carouselSection: {
+        marginTop: -15,
+        paddingBottom: 10,
     },
     sliderContainer: {
         height: "30%",

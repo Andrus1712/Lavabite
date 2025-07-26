@@ -34,6 +34,9 @@ export default function RootLayout() {
         <Stack.Screen name="+not-found" />
         <Stack.Screen name="nuevo-servicio" />
         <Stack.Screen name="cobro-servicio" />
+        <Stack.Screen name="vehiculos" />
+        <Stack.Screen name="vehiculo-form" />
+        <Stack.Screen name="metricas" />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
