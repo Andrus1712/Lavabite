@@ -1,6 +1,7 @@
 import { FontAwesome5 } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Datos de ejemplo para el usuario
@@ -22,12 +23,38 @@ const SETTINGS_OPTIONS = [
 ];
 
 export default function UserScreen() {
+  const handleLogout = () => {
+    Alert.alert(
+      'Cerrar Sesión',
+      '¿Estás seguro de que deseas cerrar sesión?',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        { 
+          text: 'Cerrar Sesión', 
+          style: 'destructive',
+          onPress: () => {
+            // Aquí puedes limpiar datos de sesión si es necesario
+            router.replace('/auth/login');
+          }
+        }
+      ]
+    );
+  };
+
+  const handleSettingPress = (item) => {
+    if (item.title === 'Cerrar sesión') {
+      handleLogout();
+    } else {
+      console.log(`Opción ${item.title} presionada`);
+    }
+  };
+
   const renderSettingItem = (item) => {
     return (
       <TouchableOpacity 
         key={item.id} 
         style={styles.settingItem} 
-        onPress={() => console.log(`Opción ${item.title} presionada`)}
+        onPress={() => handleSettingPress(item)}
       >
         <View style={[styles.settingIconContainer, { backgroundColor: `${item.color}20` }]}>
           <FontAwesome5 name={item.icon} size={20} color={item.color} />
