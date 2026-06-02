@@ -15,9 +15,13 @@ Proyecto Expo con navegación basada en rutas de archivo. Incluye pantallas para
 
 ## 🎬 Vista previa
 
-![Preview Lavabite 1](@file:assets/images/Picture1.png)
+<p align="center">
+  <img src="assets/images/Picture1.png" alt="Preview Lavabite 1" width="280" />
+</p>
 
-![Preview Lavabite 2](@file:assets/images/Picture2.png)
+<p align="center">
+  <img src="assets/images/Picture2.png" alt="Preview Lavabite 2" width="280" />
+</p>
 
 ## 📁 Estructura principal
 
