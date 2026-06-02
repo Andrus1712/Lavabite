@@ -1,50 +1,82 @@
-# Welcome to your Expo app 👋
+# Lavabite
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Lavabite es una aplicación móvil construida con **Expo**, **React Native** y **Expo Router**. Está pensada para administrar servicios, clientes y vehículos desde una interfaz nativa y multiplataforma.
 
-## Get started
+## 🚀 Descripción
 
-1. Install dependencies
+Proyecto Expo con navegación basada en rutas de archivo. Incluye pantallas para:
 
+- Gestión de clientes
+- Listado y cobro de servicios
+- Registro de nuevos servicios
+- Manejo de vehículos
+- Visualización de métricas
+- Perfil de usuario
+
+## 🎬 Vista previa
+
+![Preview Lavabite 1](@file:assets/images/Picture1.png)
+
+![Preview Lavabite 2](@file:assets/images/Picture2.png)
+
+## 📁 Estructura principal
+
+- `app/` - Rutas y pantallas de la aplicación.
+  - `app/(tabs)/` - Navegación por pestañas.
+  - `app/index.tsx` - Pantalla principal.
+  - `app/vehiculos.tsx`, `app/metricas.tsx`, `app/cobro-servicio.tsx`, `app/nuevo-servicio.tsx`, `app/vehiculo-form.tsx` - Páginas funcionales.
+- `components/` - Componentes reutilizables.
+- `assets/` - Imágenes, fuentes y recursos estáticos.
+- `constants/` - Constantes de la aplicación.
+- `hooks/` - Hooks personalizados.
+- `scripts/` - Scripts auxiliares, por ejemplo `reset-project.js`.
+
+## 📦 Dependencias principales
+
+- `expo`
+- `expo-router`
+- `react`
+- `react-native`
+- `@react-navigation/bottom-tabs`
+- `react-native-chart-kit`
+- `react-native-snap-carousel`
+- `expo-image`, `expo-font`, `expo-splash-screen`, `expo-haptics`, `expo-linking`, `expo-web-browser`
+
+## 🧰 Scripts disponibles
+
+- `npm start` - Inicia Expo Dev Tools.
+- `npm run android` - Inicia la app en Android.
+- `npm run ios` - Inicia la app en iOS.
+- `npm run web` - Inicia la app en web.
+- `npm run lint` - Ejecuta ESLint.
+- `npm run reset-project` - Ejecuta `scripts/reset-project.js`.
+
+## ⚙️ Configuración inicial
+
+1. Instalar dependencias:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+2. Iniciar la aplicación:
    ```bash
-   npx expo start
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+3. Abrir en Android, iOS o web desde el dashboard de Expo.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🧩 Requisitos
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- Node.js compatible con Expo.
+- Emulador o dispositivo físico para probar Android/iOS.
+- Expo CLI si se usa con comandos directos.
 
-## Get a fresh project
+## 📌 Notas
 
-When you're ready, run:
+- La configuración de la app se encuentra en `app.json`.
+- Usa `expo-router` con `typedRoutes` habilitado para una navegación limpia.
+- El proyecto está configurado para Android, iOS y web.
 
-```bash
-npm run reset-project
-```
+---
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+> Documentación generada para el proyecto `Lavabite`.
